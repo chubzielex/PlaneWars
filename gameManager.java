@@ -12,6 +12,7 @@ public class gameManager{
 	public void init(){
 
 		player = new Player((gameSetUp.gameWidth / 2) + 50, (gameSetUp.gameHeight - 30) + 50);
+		player.init();
 	}
 
 	public void tick(){
