@@ -72,5 +72,22 @@ public class gameManager{
 					}
 				}
 			}
+			//collision bullet to enemy.
+		for(int i = 0; i<enemies.size(); i++){
+			int ex = enemies.get(i).getX();
+			int ey = enemies.get(i).getY();
+			for(int j =0; j<bullet.size(); j++){
+				int bx = bullet.get(j).getX();
+				int by = bullet.get(j).getY();
+
+				if(ex < bx + 6 && ex + 25 > bx && ey < by + 6 && ey + 25 > by){
+						enemies.remove(i);
+						i--;
+						bullet.remove(j);
+						j--;
+					}
+
+			}	
+		}
 	}
 }

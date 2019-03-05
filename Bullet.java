@@ -28,5 +28,11 @@ public class Bullet{
 		g.fillRect(x, y, 6, 10);
 
 	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
 
 }
