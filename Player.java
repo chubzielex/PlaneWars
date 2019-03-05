@@ -7,7 +7,9 @@ public class Player implements KeyListener{
 
 	private int x;
 	private int y;
-	boolean left,right;
+	private boolean left,right;
+	private boolean fire;
+
 
 	public Player(int x, int y){
 		this.x = x;
@@ -23,14 +25,24 @@ public class Player implements KeyListener{
 	public void tick(){
 
 		if(left){
-			x -=5;
-		}
+				if(x>=50){
+					x -=6;
+				}
+			}
 
 		if(right){
-			x +=5;
+				if(x<=450-30){
+					x +=6;
+				}
+			}
+
+		if(fire){
+			gameManager.bullet.add(new Bullet(x, y));
 		}
 
+
 	}
+
 
 	public void render(Graphics g){
 
@@ -49,6 +61,10 @@ public class Player implements KeyListener{
 			right = true;
 		}
 
+		if(source == KeyEvent.VK_B){
+			fire = true;
+		}
+
 	}
 
 	public void keyReleased(KeyEvent e){
@@ -61,6 +77,10 @@ public class Player implements KeyListener{
 
 		if(source == KeyEvent.VK_RIGHT){
 			right = false;
+		}
+
+		if(source == KeyEvent.VK_B){
+			fire = false;
 		}
 
 	}
