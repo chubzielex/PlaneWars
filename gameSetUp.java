@@ -1,3 +1,6 @@
+import java.awt.image.BufferStrategy;
+import java.awt.Graphics;
+
 public class gameSetUp implements Runnable {
 
 	private String title;
@@ -5,6 +8,9 @@ public class gameSetUp implements Runnable {
 	private int height;
 	private Thread thread;
 	private boolean running;
+	private BufferStrategy buffer;
+	private Graphics g;
+	private int y;
 
 	private Display display;	
 
@@ -45,7 +51,44 @@ public class gameSetUp implements Runnable {
 		}
 	}
 
+	public void tick(){
+
+		y +=1;
+	}
+
+	public void render(){
+		buffer = display.getCanvas().getBufferStrategy();
+			if(buffer == null){
+			display.getCanvas().createBufferStrategy(3);
+				return;
+			}
+
+		g = buffer.getDrawGraphics();
+		g.clearRect(0, 0, width, height);
+
+		g.fillRect(33, y, 44, 44);
+
+		buffer.show();
+		g.dispose();
+	}
+
 	public void run(){
+		
 		init();
+
+		int fps = 50;
+		double timePerTick = 1000000000/fps;
+		double delta = 0;
+		long current = System.nanoTime();
+
+		while (running){
+			delta = delta + (System.nanoTime() - current)/timePerTick;
+			current = System.nanoTime();
+				if(delta>=1){
+			tick();
+			render();
+			delta--;
+			}
+		}
 	}
 }
