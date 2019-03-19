@@ -76,6 +76,15 @@ public class gameManager{
 		for(int i = 0; i<enemies.size(); i++){
 			int ex = enemies.get(i).getX();
 			int ey = enemies.get(i).getY();
+
+			int px = player.getX();
+			int py = player.getY();
+
+			if(px < ex + 25 && px + 30 > ex && py < ey + 25 && py + 30 > ey){
+				enemies.remove(i);
+				i--;
+			}
+
 			for(int j =0; j<bullet.size(); j++){
 				int bx = bullet.get(j).getX();
 				int by = bullet.get(j).getY();

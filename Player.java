@@ -10,6 +10,8 @@ public class Player implements KeyListener{
 	private boolean left,right;
 	private boolean fire;
 
+	
+
 
 	public Player(int x, int y){
 		this.x = x;
@@ -87,6 +89,14 @@ public class Player implements KeyListener{
 
 	public void keyTyped(KeyEvent e){
 
+	}
+
+	public int getX(){
+		return x;
+	}
+
+	public int getY(){
+		return y;
 	}
 
 
