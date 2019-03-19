@@ -10,7 +10,11 @@ public class Player implements KeyListener{
 	private boolean left,right;
 	private boolean fire;
 
-	
+	private long current;
+	private long delay;
+	private int health;
+
+
 
 
 	public Player(int x, int y){
@@ -19,37 +23,44 @@ public class Player implements KeyListener{
 	}
 
 	public void init(){
-
 		Display.frame.addKeyListener(this);
+		current = System.nanoTime();
+		delay =100;
+		health = 3;
 
 	}
 
 	public void tick(){
 
-		if(left){
+		if(!(health <=0)){
+			if(left){
 				if(x>=50){
-					x -=6;
+					x -=4;
 				}
 			}
-
-		if(right){
-				if(x<=450-30){
-					x +=6;
+			if(right){
+				if(x<=450-60){
+					x +=4;
 				}
 			}
+			if(fire){
+				long breaks = (System.nanoTime() - current) / 1000000;
+				if(breaks > delay){
+					gameManager.bullet.add(new Bullet(x+15, y));
+				}
 
-		if(fire){
-			gameManager.bullet.add(new Bullet(x, y));
+				current = System.nanoTime();
+			}
 		}
-
 
 	}
 
 
 	public void render(Graphics g){
-
-		g.setColor(Color.red);
-		g.fillRect(x, y, 30, 30);
+		if (!(health <= 0)){
+			g.setColor(Color.red);
+			g.fillRect(x, y, 30, 30);
+		}
 	}
 
 	public void keyPressed(KeyEvent e){
@@ -97,6 +108,13 @@ public class Player implements KeyListener{
 
 	public int getY(){
 		return y;
+	}
+	public int getHealth(){
+		return health;
+	}
+	public void setHealth(int health){
+
+		this.health = health;
 	}
 
 

@@ -16,6 +16,7 @@ public class gameManager{
 
 	private long current;
 	private long delay;
+	private int health;
 
 	public gameManager(){
 
@@ -29,6 +30,7 @@ public class gameManager{
 		enemies = new ArrayList<Enemy>();
 		current = System.nanoTime();
 		delay = 800;
+		health = player.getHealth();
 	}
 
 	public void tick(){
@@ -45,7 +47,10 @@ public class gameManager{
 				Random rand = new Random();
 				int randX = rand.nextInt(450);
 				int randY = rand.nextInt(450);
+
+				if(health > 0){
 				enemies.add(new Enemy(randX, -randY));
+				}
 			}
 			current = System.nanoTime();
 		}	
@@ -83,6 +88,12 @@ public class gameManager{
 			if(px < ex + 25 && px + 30 > ex && py < ey + 25 && py + 30 > ey){
 				enemies.remove(i);
 				i--;
+				health --;
+				System.out.println(health);
+				if(health <= 0){
+					enemies.removeAll(enemies);
+					player.setHealth(0);
+				}
 			}
 
 			for(int j =0; j<bullet.size(); j++){
