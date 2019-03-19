@@ -46,7 +46,7 @@ public class Player implements KeyListener{
 			if(fire){
 				long breaks = (System.nanoTime() - current) / 1000000;
 				if(breaks > delay){
-					gameManager.bullet.add(new Bullet(x+15, y));
+					gameManager.bullet.add(new Bullet(x+30, y));
 				}
 
 				current = System.nanoTime();
@@ -58,8 +58,8 @@ public class Player implements KeyListener{
 
 	public void render(Graphics g){
 		if (!(health <= 0)){
-			g.setColor(Color.red);
-			g.fillRect(x, y, 30, 30);
+			
+			g.drawImage(loadImage.player, x, y, 60, 60, null);
 		}
 	}
 

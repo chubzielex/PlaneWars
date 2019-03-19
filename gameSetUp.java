@@ -1,4 +1,4 @@
-import java.awt.image.BufferStrategy;
+ import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 
 public class gameSetUp implements Runnable {
@@ -27,7 +27,9 @@ public class gameSetUp implements Runnable {
 
 	public void init(){
 		display = new Display(title, width, height);
+		loadImage.init();
 		manager = new gameManager();
+
 		// gameWidth = 400;
 		// gameHeight = 400;
 		manager.init();
@@ -76,7 +78,7 @@ public class gameSetUp implements Runnable {
 
 		
 		
-		g.fillRect(50, 50, gameWidth, gameHeight);
+		g.drawImage(loadImage.image,50, 50, gameWidth, gameHeight, null);
 		manager.render(g);
 
 		buffer.show();

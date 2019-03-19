@@ -23,8 +23,7 @@ public class Enemy{
 
 	public void render(Graphics g){
 
-		g.setColor(Color.black);
-		g.fillOval(x,y,25,25);
+		g.drawImage(loadImage.enemy,x,y,50,50,null);
 	}
 
 	public int getX(){
