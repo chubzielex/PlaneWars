@@ -27,9 +27,9 @@ public class Bullet{
 	}
 
 	public void render(Graphics g){
-		g.setColor(Color.blue);
-		g.fillRect(x, y, 6, 10);
-		g.setColor(Color.BLACK);
+		//g.setColor(Color.red);
+		g.drawImage(loadImage.bullet, x, y, 6, 10, null);
+	
 	}
 	
 

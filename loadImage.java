@@ -7,12 +7,14 @@ public class loadImage{
 	public static BufferedImage image;
 	public static BufferedImage entities;
 	public static BufferedImage player, enemy;
+	public static BufferedImage bullet;
 
 	
 
 
 	public static void init(){
-		image = imageLoader("bg0.png");
+		image = imageLoader("backg.png");
+		bullet = imageLoader("bullet.gif");
 		entities = imageLoader("airplane.png");
 		crop();
 	
