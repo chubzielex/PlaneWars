@@ -17,16 +17,7 @@ public class Bullet{
 	}
 
 	public void tick(){
-
 		y -= speed;
-
-	}
-
-	public void render(Graphics g){
-
-		g.setColor(Color.blue);
-		g.fillRect(x, y, 6, 10);
-
 	}
 	public int getX(){
 		return x;
@@ -34,5 +25,12 @@ public class Bullet{
 	public int getY(){
 		return y;
 	}
+
+	public void render(Graphics g){
+		g.setColor(Color.blue);
+		g.fillRect(x, y, 6, 10);
+		g.setColor(Color.BLACK);
+	}
+	
 
 }
