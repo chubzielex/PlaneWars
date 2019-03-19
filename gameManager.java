@@ -34,6 +34,7 @@ public class gameManager implements KeyListener{
 		delay = 2000;
 		health = player.getHealth();
 		score = 0;
+
 	}
 
 	public void tick(){
@@ -124,12 +125,14 @@ public class gameManager implements KeyListener{
 			}	
 
 			g.setColor(Color.blue);
-			g.setFont(new Font("arial", Font.BOLD, 40));
+			g.setFont(new Font("arial", Font.BOLD, 22));
 			g.drawString("Score : " + score, 70, 500);
+
 			}
 		}
 
 		else {
+			g.setColor(Color.WHITE);
 			g.setFont(new Font("aerial", Font.PLAIN, 33));
 			g.drawString("Hit ENTER to start game!", 65, (gameSetUp.gameHeight/2) + 50);
 		}

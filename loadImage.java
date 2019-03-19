@@ -5,18 +5,19 @@ import javax.imageio.ImageIO;
 public class loadImage{
 
 	public static BufferedImage image;
-	public static BufferedImage entities;
-	public static BufferedImage player, enemy;
+	public static BufferedImage enemy;
 	public static BufferedImage bullet;
+	public static BufferedImage ship;
 
 	
 
 
 	public static void init(){
-		image = imageLoader("backg.png");
-		bullet = imageLoader("bullet.gif");
-		entities = imageLoader("airplane.png");
-		crop();
+		image = imageLoader("space.png");
+		bullet = imageLoader("MegaLaser.png");
+		ship = imageLoader("ship.png");
+		enemy = imageLoader("enemy.png");
+		
 	
 	} 
 
@@ -30,9 +31,4 @@ public class loadImage{
 		} return null;
 	}
 
-	public static void crop(){
-		enemy = entities.getSubimage(0, 0, 115, 95);
-		player = entities.getSubimage(115, 0, 115, 95);
-
-	}
 }
